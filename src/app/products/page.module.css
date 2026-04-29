@@ -1,5 +1,10 @@
+.error_loading{
+  text-align: center;
+  margin: 100px 0;
+}
+
 .div_layout{
-  margin: 80px 0;
+  margin: 100px 0;
 }
 
 .div_wrapper{

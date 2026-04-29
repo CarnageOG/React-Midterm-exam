@@ -19,13 +19,13 @@ function Page() {
 
   if (loading) {
     return(
-      <div className={styles.div_layout}>Product is Loading...</div>
+      <div className={styles.error_loading}>Product is Loading...</div>
     )
   }
 
   if (error) {
     return (
-      <div className={styles.div_layout}>Something went wrong...</div>
+      <div className={styles.error_loading}>Something went wrong...</div>
     )
   }
 

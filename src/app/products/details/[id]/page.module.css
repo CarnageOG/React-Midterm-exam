@@ -1,9 +1,15 @@
+.error_loading{
+  text-align: center;
+  margin: 100px 0;
+}
+
 .div_layout{
-  margin-top: 70px;
+  margin: 100px 0;
 }
 
 .div_wrapper{
   max-width: 1440px;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
