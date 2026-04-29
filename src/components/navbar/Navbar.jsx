@@ -1,5 +1,7 @@
-import styles from "./Navbar.module.css"
-import Link from "next/link"
+"use client";
+import styles from "./Navbar.module.css";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV = [
   { id:1, title:"Home", url:"/" },
@@ -12,12 +14,13 @@ const CART = [
 ];
 
 const Navbar = () => {
+    const pathname = usePathname();
     return (
         <>  <div className={styles.nav_layout}>
                 <div className={styles.div_header}>
                     <nav className={styles.navbar_wrapper}>
                         {NAV.map((item) => (
-                            <div key={item.id}>
+                            <div key={item.id} className={pathname === item.url ? styles.active : null}>
                                 <Link href={item.url}>
                                     <p>
                                         {item.title}
@@ -27,7 +30,7 @@ const Navbar = () => {
                         ))}
                     </nav>
                     {CART.map((item) => (
-                        <div key={item.id}>
+                        <div key={item.id} className={pathname === item.url ? styles.active : null}>
                             <Link href={item.url}>
                                 <p>
                                     {item.title}
