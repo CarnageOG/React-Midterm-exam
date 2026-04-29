@@ -1,29 +1,26 @@
-.footer_layout{
+.nav_layout{
     background-color: #EDECEB;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    bottom: 0;
+    top: 0;
     left: 0;
     z-index: 999;
 }
 
-.footer_wrapper{
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-.footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
+.div_header{
     max-width: 1440px;
     margin: 0 auto;
     padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.footer_div{
+.navbar_wrapper{
     display: flex;
+    align-items: center;
     flex-direction: row;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 50px;
+    list-style-type: none;
 }
