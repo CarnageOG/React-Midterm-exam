@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {useRouter} from "next/navigation";
 
 function page() {
-    
     const router = useRouter();
     const [products, setProducts] = useState ([]);
     const [loading, setLoading] = useState (true);
@@ -13,7 +12,7 @@ function page() {
     useEffect(() => {
         try{
             fetch("https://fakestoreapi.com/products")
-            .then((response) => response.json())
+            .then((res) => res.json())
             .then((result) => setProducts(result));
         } catch (error){
             setError(true)
@@ -24,13 +23,13 @@ function page() {
 
     if(loading) {
         return(
-            <div>Loading</div>
+            <div className={styles.div_layout}>Loading</div>
         )
     };
 
     if(error) {
         return(
-        <div>Something went wrong</div>
+            <div className={styles.div_layout}>Something went wrong</div>
         )
     };
 

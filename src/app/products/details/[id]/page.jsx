@@ -18,11 +18,15 @@ function Page() {
   }, [id]);
 
   if (loading) {
-    return <p>Product is Loading...</p>;
+    return(
+      <div className={styles.div_layout}>Product is Loading...</div>
+    )
   }
 
   if (error) {
-    return <p>Something went wrong...</p>;
+    return (
+      <div className={styles.div_layout}>Something went wrong...</div>
+    )
   }
 
   return (
