@@ -18,7 +18,7 @@ const Navbar = () => {
     return (
         <>  <div className={styles.nav_layout}>
                 <div className={styles.div_header}>
-                    <h1 className={styles.h1_header}>React Midterm Exam</h1>
+                    <Link href="/" className={styles.header_link}>React Midterm Exam</Link>
                     <nav className={styles.navbar_wrapper}>
                         {NAV.map((item) => (
                             <div key={item.id} className={pathname === item.url ? styles.active : null}>

@@ -8,12 +8,13 @@
     border-bottom: 0.5px solid black;
 }
 
-.h1_header{
+.header_link{
     padding: 5px;
     font-size: 24px;
     color: #FFFFFF;
     background-color: #070D0D;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .div_header{
