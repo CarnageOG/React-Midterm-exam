@@ -5,10 +5,15 @@ const page = async () => {
   const res = await fetch("https://fakestoreapi.com/users/3")
   const user = await res.json();
 
-  if(!user){
-    return(
-      <div className={styles.user_not}>მომხარებელი არ არსებობს</div>
-    )
+  // if(!user){
+  //   return(
+  //     <div className={styles.user_not}>მომხარებელი არ არსებობს</div>
+  //   )
+  // }
+  if (!res.ok) {
+    return (
+      <div className={styles.user_not}>Profile Not Found</div>
+    );
   }
 
   return (
