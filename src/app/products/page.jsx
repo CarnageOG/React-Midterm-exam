@@ -23,7 +23,7 @@ function page() {
 
     if(loading) {
         return(
-            <div className={styles.error_loading}>Loading</div>
+            <div className={styles.error_loading}>LOADING</div>
         )
     };
 

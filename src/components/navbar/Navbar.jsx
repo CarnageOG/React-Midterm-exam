@@ -10,7 +10,7 @@ const NAV = [
 ];
 
 const CART = [
-  { id:4, title:"Cart", url:"/Cart" },
+  { id:4, title:"Cart", url:"/cart" },
 ];
 
 const Navbar = () => {
