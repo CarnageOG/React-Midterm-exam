@@ -473,3 +473,147 @@ CSS Modules are used for scoped styling.
 ## License
 
 This project is for educational purposes (Midterm Exam).
+
+# React Midterm Exam – Products Page
+
+This document describes the Products listing page and Product Details page.
+
+---
+
+## Overview
+
+The Products section allows users to:
+
+* View a list of products
+* Navigate to individual product details
+* Fetch data from an external API
+
+Data source: [https://fakestoreapi.com](https://fakestoreapi.com)
+
+---
+
+## File Structure
+
+```
+app/
+  products/
+    page.jsx
+    page.module.css
+    details/
+      [id]/
+        page.jsx
+        page.module.css
+```
+
+---
+
+## Products Page (List)
+
+### Description
+
+Displays all products fetched from the API.
+
+### Logic
+
+* Uses `useEffect` to fetch data
+* Stores products in state
+* Handles loading and error states
+* Navigates to details page on click
+
+```js
+fetch("https://fakestoreapi.com/products")
+  .then((res) => res.json())
+  .then((result) => setProducts(result));
+```
+
+### Navigation
+
+```js
+onClick={() => router.push(`/products/details/${product.id}`)}
+```
+
+---
+
+## Product Details Page
+
+### Description
+
+Displays detailed information for a selected product.
+
+### Dynamic Routing
+
+Uses dynamic route parameter:
+
+```
+/products/details/[id]
+```
+
+### Logic
+
+* Gets `id` using `useParams()`
+* Fetches product data based on ID
+* Handles loading and error states
+
+```js
+fetch(`https://fakestoreapi.com/products/${id}`)
+  .then(res => res.json())
+  .then((result) => setProduct(result))
+```
+
+---
+
+## Displayed Data
+
+### Product List
+
+* Image
+* Category
+* Title
+* Description (truncated)
+* Price
+
+### Product Details
+
+* Full title
+* Category
+* Image
+* Price
+* Full description
+
+---
+
+## Styling
+
+CSS Modules are used for both pages.
+
+### Common Classes
+
+* `.error_loading` – Loading and error messages
+* `.div_layout` – Page spacing
+* `.div_wrapper` – Container
+
+### Product Card (List)
+
+* Hover scaling effect
+* Truncated text using line clamp
+* Responsive flex layout
+
+### Product Details
+
+* Centered layout
+* Larger content display
+
+---
+
+## Notes
+
+* Both pages are client components (`"use client"`)
+* Uses `useRouter` for navigation
+* Uses `useParams` for dynamic routing
+* API calls are performed on the client side
+
+---
+
+## License
+
+This project is for educational purposes (Midterm Exam).
