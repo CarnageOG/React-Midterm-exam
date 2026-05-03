@@ -13,10 +13,20 @@
   padding: 0 20px;
 }
 
+.cart_layout{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap:20px;
+}
+
 .div_cart{
   display: flex;
   flex-direction: column;
   border-top: 1px solid #808080;
+  max-width: 900px;
+  width: 100%;
 }
 
 .div_cart_sum{
@@ -60,7 +70,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  max-width: 150px;
+  max-width: 160px;
   width: 100%;
 }
 
@@ -77,4 +87,26 @@
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
   background-color: black;
+}
+
+.div_sum{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.div_total{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #E5E5E5;
+  gap: 10px;
+  padding: 20px;
+}
+
+.div_buy{
+  padding: 20px 100px;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
 }
