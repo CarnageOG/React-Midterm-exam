@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# React Midterm Exam – Navbar Component
 
-## Getting Started
+This project includes a reusable Navbar component built with Next.js (App Router). It provides simple navigation with active route highlighting.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+* Client-side navigation using `next/link`
+* Active route detection with `usePathname`
+* Dynamic rendering of navigation items
+* Separate Cart section
+* Clean and modular structure
+
+---
+
+## File Structure
+
+```
+components/
+  Navbar/
+    Navbar.jsx
+    Navbar.module.css
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Component Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The `Navbar` component:
 
-## Learn More
+* Uses `usePathname()` to detect the current route
+* Maps through predefined navigation arrays (`NAV`, `CART`)
+* Applies an active class when the route matches
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Navigation Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Navigation links are defined as arrays:
 
-## Deploy on Vercel
+```js
+const NAV = [
+  { id: 1, title: "Home", url: "/" },
+  { id: 2, title: "Products", url: "/products" },
+  { id: 3, title: "Profile", url: "/profile" },
+];
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+const CART = [
+  { id: 4, title: "Cart", url: "/cart" },
+];
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This makes the component scalable and easy to maintain.
+
+---
+
+## How It Works
+
+* `usePathname()` returns the current URL path
+* Each navigation item is compared against it
+* If matched, an `active` class is applied
+
+```js
+const pathname = usePathname();
+
+<div className={pathname === item.url ? styles.active : null}>
+```
+
+---
+
+## Styling
+
+Styling is handled using CSS Modules:
+
+* `Navbar.module.css`
+* Scoped styles prevent class conflicts
+
+---
+
+## Usage
+
+Import and use the Navbar in your layout or pages:
+
+```js
+import Navbar from "@/components/Navbar/Navbar";
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+}
+```
+
+---
+
+## Requirements
+
+* Next.js 13+ (App Router)
+* React
+
+---
+
+## Notes
+
+* The component is marked with `"use client"` because it relies on hooks
+* Active link styling depends on exact pathname match
+
+---
+
+## License
+
+This project is for educational purposes (Midterm Exam).
+
