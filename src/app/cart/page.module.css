@@ -1,3 +1,8 @@
 .div_layout{
   margin: 100px 0;
 }
+
+.error_loading{
+  text-align: center;
+  margin: 100px 0;
+}
