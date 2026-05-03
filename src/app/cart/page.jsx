@@ -45,22 +45,49 @@ const Page = () => {
         );
     }
 
+    const increaseQty = (id) => {
+        setCart((prev) =>
+            prev.map((item) =>
+                item.id === id
+                    ? { ...item, quantity: Math.min(item.quantity + 1, 10) }
+                    : item
+            )
+        );
+    };
+
+    const decreaseQty = (id) => {
+        setCart((prev) =>
+            prev.map((item) =>
+                item.id === id
+                    ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
+                    : item
+            )
+        );
+    };
+
+    const deleteItem = (id) => {
+        setCart((prev) => prev.filter((item) => item.id !== id));
+    };
+
     return (
         <div className={styles.div_layout}>
             <div className={styles.cart_wrapper}>
                 <h1 className={styles.cart_h1}>Shoping cart</h1>
                 <div className={styles.div_cart}>
-                    {cart.map((cart) => (
-                        <div className={styles.div_cart_sum} key={cart.id}>
+                    {cart.map((item) => (
+                        <div className={styles.div_cart_sum} key={item.id}>
                             <div className={styles.div_product}>
-                                <img src={cart.image} alt={cart.title} width={50} />
-                                <h3 className={styles.cart_h3}>{cart.title}</h3>
+                                <img src={item.image} alt={item.title} width={50} />
+                                <h3 className={styles.cart_h3}>{item.title}</h3>
                             </div>
                             <div className={styles.div_quan}>
-                                <p>{cart.quantity}</p>
+                                <button onClick={() => increaseQty(item.id)}>+</button>
+                                <p>{item.quantity}</p>
+                                <button onClick={() => decreaseQty(item.id)}>-</button>
                             </div>
                             <div className={styles.div_price}>
-                                <p>{cart.price} $</p> 
+                                <p>{(item.price * item.quantity).toFixed(2)} $</p>
+                                <button onClick={() => deleteItem(item.id)}>delete</button>
                             </div>
                         </div>
                     ))}
