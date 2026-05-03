@@ -337,3 +337,139 @@ export default function Layout({ children }) {
 
 This project is for educational purposes (Midterm Exam).
 
+# React Midterm Exam – Profile Page
+
+This document describes the Profile page implementation.
+
+---
+
+## Overview
+
+The Profile page fetches and displays user data from an external API.
+
+* Data source: [https://fakestoreapi.com/users/3](https://fakestoreapi.com/users/3)
+* Built using Next.js Server Components
+* Styled with CSS Modules
+
+---
+
+## File Structure
+
+```
+app/
+  profile/
+    page.jsx
+    page.module.css
+```
+
+---
+
+## Page Logic
+
+The page is an async server component that fetches user data:
+
+```js
+const res = await fetch("https://fakestoreapi.com/users/3");
+const user = await res.json();
+```
+
+### Error Handling
+
+If user data is not available, a fallback UI is shown:
+
+```js
+if (!user) {
+  return <div className={styles.user_not}>Profile Not Found</div>;
+}
+```
+
+---
+
+## Displayed Data
+
+### User Info
+
+* First name
+* Last name
+* Email
+* Username
+* Phone
+
+### Address Info
+
+* City
+* Street and number
+* Zipcode
+
+---
+
+## Component Structure
+
+The layout is split into two main sections:
+
+* User details
+* Address details
+
+Each section is styled as a card.
+
+---
+
+## Styling
+
+CSS Modules are used for scoped styling.
+
+### Key Classes
+
+* `.user_not` – Centered fallback message
+* `.div_layout` – Top spacing
+* `.div_wrapper` – Container with max width and spacing
+* `.div_profile` – Card-style blocks
+
+```css
+.user_not{
+  max-width: 1440px;
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.div_layout{
+  margin-top: 100px;
+}
+
+.div_wrapper{
+  max-width: 1440px;
+  padding: 0 20px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.div_profile{
+  max-width: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #F2F2EF;
+  gap: 12px;
+  padding: 10px;
+}
+```
+
+---
+
+## Notes
+
+* This page uses server-side data fetching by default (App Router)
+* The fetch call runs on the server
+* You may optionally handle errors using `res.ok`
+
+---
+
+## License
+
+This project is for educational purposes (Midterm Exam).
