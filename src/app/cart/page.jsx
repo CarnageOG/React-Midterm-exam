@@ -81,13 +81,13 @@ const Page = () => {
                                 <h3 className={styles.cart_h3}>{item.title}</h3>
                             </div>
                             <div className={styles.div_quan}>
-                                <button onClick={() => increaseQty(item.id)}>+</button>
+                                <button className={styles.cart_button} onClick={() => increaseQty(item.id)}>+</button>
                                 <p>{item.quantity}</p>
-                                <button onClick={() => decreaseQty(item.id)}>-</button>
+                                <button className={styles.cart_button} onClick={() => decreaseQty(item.id)}>-</button>
                             </div>
                             <div className={styles.div_price}>
                                 <p>{(item.price * item.quantity).toFixed(2)} $</p>
-                                <button onClick={() => deleteItem(item.id)}>delete</button>
+                                <button className={styles.cart_button} onClick={() => deleteItem(item.id)}>DELETE</button>
                             </div>
                         </div>
                     ))}
