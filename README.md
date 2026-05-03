@@ -617,3 +617,142 @@ CSS Modules are used for both pages.
 ## License
 
 This project is for educational purposes (Midterm Exam).
+
+# React Midterm Exam – Cart Page
+
+This document describes the Cart page implementation.
+
+---
+
+## Overview
+
+The Cart page displays products added to the cart, including quantity management and total price calculation.
+
+* Data source: [https://fakestoreapi.com/carts/1](https://fakestoreapi.com/carts/1)
+* Additional product details fetched per item
+* Built as a client component
+
+---
+
+## File Structure
+
+```
+app/
+  cart/
+    page.jsx
+    page.module.css
+```
+
+---
+
+## Data Fetching
+
+The cart data is fetched from the API, then enriched with product details:
+
+```js
+const res = await fetch("https://fakestoreapi.com/carts/1");
+const result = await res.json();
+
+const productsWithDetails = await Promise.all(
+  result.products.map(async (item) => {
+    const res = await fetch(`https://fakestoreapi.com/products/${item.productId}`);
+    const productData = await res.json();
+    return {
+      ...productData,
+      quantity: item.quantity,
+    };
+  })
+);
+```
+
+---
+
+## Features
+
+### Quantity Management
+
+* Increase quantity (max: 10)
+* Decrease quantity (min: 1)
+
+```js
+Math.min(item.quantity + 1, 10);
+Math.max(item.quantity - 1, 1);
+```
+
+### Delete Item
+
+Removes a product from the cart:
+
+```js
+setCart((prev) => prev.filter((item) => item.id !== id));
+```
+
+### Total Calculation
+
+Calculates total cart price dynamically:
+
+```js
+const total = cart.reduce((sum, item) => {
+  return sum + item.price * item.quantity;
+}, 0);
+```
+
+---
+
+## UI Structure
+
+### Left Section
+
+* Product list
+* Image, title, quantity controls, price
+
+### Right Section
+
+* Total price summary
+* Buy button
+
+---
+
+## Styling
+
+CSS Modules are used.
+
+### Key Classes
+
+* `.div_layout` – Page spacing
+* `.cart_wrapper` – Container
+* `.cart_layout` – Main layout (flex)
+* `.div_cart` – Cart items list
+* `.div_cart_sum` – Individual item row
+* `.div_sum` – Summary section
+
+### Interactions
+
+* Hover effects on buttons
+* Smooth transitions
+
+---
+
+## States
+
+* Loading state
+* Error state
+
+```js
+if (loading) return <div>LOADING</div>;
+if (error) return <div>Something went wrong</div>;
+```
+
+---
+
+## Notes
+
+* Uses `useEffect` for client-side fetching
+* Combines multiple API calls using `Promise.all`
+* State is managed locally using `useState`
+
+---
+
+## License
+
+This project is for educational purposes (Midterm Exam).
